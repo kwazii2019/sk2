@@ -1,0 +1,253 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ Page Language="C#" %>
+<%@ Register tagprefix="SharePoint" namespace="Microsoft.SharePoint.WebControls" assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+<meta name="WebPartPageExpansion" content="full" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Check</title>
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<SharePoint:CssRegistration Name="default" runat="server"/>
+</head>
+<style>
+ body
+ {
+  background-image:url('http://cfile242.uf.daum.net/image/99B8694C5C9D759B062B00')
+ }
+}
+</style>
+<body>
+
+<form id="form1" runat="server">
+ <table  height="20"><tr><td></td></tr></table>
+ <table border="1" bordercolor="blue" width ="700" height="300" align = "center" style="font-size:15px; background-color:white" >
+ 
+ <tr align ="center" height="50px" >
+  <td style="background-color:skyblue;  font-family:'Arial Black'; font-size:x-large " colspan="2">
+   <b>나의 퇴직금 예측기 v1.0</b>
+  </td>
+ </tr>
+ <tr height="35px">
+  <td style="padding-left:10px" >
+   1. 본인의 Year of Service 숫자를 입력하세요
+  </td>
+  <td align="center" style="width:110px" >
+   <select name="yyOfservice" id="yyOfservice">
+       <option value="5">2.5</option>
+       <option value="7">3</option>
+         <option value="8">3.5</option>
+       <option value="9">4</option>
+       <option value="10">4.5</option>
+       <option value="12">5</option>
+       <option value="13">5.5</option>
+       <option value="14">6</option>
+       <option value="15">6.5</option>
+       <option value="16">7</option>
+       <option value="17">7.5</option>
+         <option value="19">8</option>
+       <option value="20">8.5</option>
+       <option value="21">9</option>
+       <option value="22">9.5</option>
+       <option value="26">10</option>
+       <option value="27">10.5</option>
+       <option value="28">11</option>
+       <option value="29">11.5</option>
+       <option value="31">12</option>
+         <option value="32">12.5</option>
+       <option value="33">13</option>
+       <option value="35">13.5</option>
+       <option value="36">14</option>
+       <option value="37">14.5</option>
+       <option value="39">15</option>
+       <option value="40">15.5</option>
+       <option value="41">16</option>
+          <option value="43">16.5</option>
+       <option value="44">17</option>
+         <option value="45">17.5</option>
+       <option value="46">18</option>
+       <option value="48">18.5</option>
+       <option value="49">19</option>
+       <option value="50">19.5</option>
+       <option value="55">20</option>
+       <option value="56">20.5</option>
+       <option value="57">21</option>
+       <option value="59">21.5</option>
+         <option value="60">22</option>
+       <option value="62">22.5</option>
+       <option value="63">23</option>
+       <option value="64">23.5</option>
+       <option value="66">24</option>
+       <option value="67">24.5</option>
+       <option value="69">25</option>
+       <option value="71">25.5</option>
+       <option value="72">26</option>
+       <option value="74">26.5</option>
+       <option value="75">27</option>
+       <option value="76">27.5</option>
+       <option value="78">28</option>
+       <option value="79">28.5</option>
+       <option value="81">29</option>
+       <option value="82">29.5</option>
+          <option value="84">30</option>
+   </select>
+  </td>
+ </tr>
+ <tr height="35px">
+  <td style="padding-left:10px" >
+   2. 퇴직시 남을 예상 AL 시간을 입력하세요.
+  </td>
+  <td align="center"><input id="alleft" style="font-weight:bold; width:90px" autocomplete="off" type="number"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td style="padding-left:10px" colspan="2">
+   3. 본인 Payslip을 열고 아래 A영역 /B영역의 숫자를 확인하세요 
+  </td>
+ </tr>
+ <tr height="500px">
+  <td align="center" colspan="2">
+   <img src="http://cfile278.uf.daum.net/image/9960924C5C9D759B099AAC" />
+  </td>
+ </tr>
+
+ <tr height="35px">
+  <td style="padding-left:10px" >
+   4. 본인 Payslip의 <span style="color:red;"><b>숫자A</b></span>를 입력하세요. (Copy & Paste가능)
+  </td>
+  <td align="center"><input id="numberA" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td style="padding-left:10px" rowspan="6" >
+   5. 퇴직하고자 하는 시점의 최종 여섯 PP의 <span style="color:blue;"><b>숫자B</b></span> 6개를 모두 입력하세요. <br></br> (Copy & Paste가능, 추석보너스 PP때의 숫자는 훨씬 큽니다. 작년 8월23일의 PaySlip을 참고해보세요.)
+   
+  </td>
+  <td>1.<input id="numberB1" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td>2.<input id="numberB2" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td>3.<input id="numberB3" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td>4.<input id="numberB4" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td>5.<input id="numberB5" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="35px">
+  <td>6.<input id="numberB6" style="font-weight:bold; width:90px" autocomplete="off" type="text"/>  
+  </td>
+ </tr>
+ <tr height="120px">
+  <td colspan="2" align="center"><div id="resultbutton" class="btn btn-default" style="WIDTH: 200px;  font-size:medium; background-color:silver; border:medium" onclick="resultR()">결과확인</div>
+   <div><center>*이 페이지는 SK FMSO께서 주신 정보를 토대로 만들어졌으나 </center> </div>
+   <div><center> 참고용 자료일 뿐, 정확한 수치는 퇴직 시 직접 확인하시길 바랍니다.*</center> </div>
+   <div><center>** 입력하신 정보는 결코 어디에도 저장되지 않습니다 **</center> </div>
+  </td>
+ </tr>
+ </table>
+</form>
+
+<br></br><br></br><br></br><br></br>
+<script type="text/javascript" src="https://opensourcegov.sharepoint.com/teams/OSE/Script%20Library/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://opensourcegov.sharepoint.com/teams/OSE/Script%20Library/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://opensourcegov.sharepoint.com/teams/OSE/Script Library/jquery.SPServices-2014.02.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="https://opensourcegov.sharepoint.com/teams/OSE/Script%20Library/OSN_CLEAN.css" />
+<link rel="stylesheet" type="text/css" href="https://opensourcegov.sharepoint.com/teams/OSE/Script%20Library/font-awesome-4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="https://opensourcegov.sharepoint.com/teams/OSE/Script%20Library/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="https://opensourcegov.sharepoint.com/teams/OSE/Style%20Library/OSE Global Styles_jd.css" />
+<link rel="stylesheet" type="text/css" href="https://opensourcegov.sharepoint.com/teams/OSE/Script%20Library/bootstrap.css" />
+
+
+<script type="text/javascript">
+    
+    
+    function resultR(){
+  var target = document.getElementById("yyOfservice");
+  var yys = target.options[target.selectedIndex].value;
+
+  //AL money
+  var alleft = document.getElementById("alleft").value;
+  var numberA = document.getElementById("numberA").value.replace(/\,/g,'');
+
+  
+  var alTotal = numberA * 140.9 / 100 * alleft ;
+  
+  //PP current total gross average
+  var numberB1= Number(document.getElementById("numberB1").value.replace(/\,/g,''));
+  var numberB2= Number(document.getElementById("numberB2").value.replace(/\,/g,''));
+  var numberB3= Number(document.getElementById("numberB3").value.replace(/\,/g,''));
+  var numberB4= Number(document.getElementById("numberB4").value.replace(/\,/g,''));
+  var numberB5= Number(document.getElementById("numberB5").value.replace(/\,/g,''));
+  var numberB6= Number(document.getElementById("numberB6").value.replace(/\,/g,''));
+ 
+  var totalPG = (numberB1 + numberB2 + numberB3 + numberB4 + numberB5 + numberB6) / 6 * yys;
+  
+  var totalResult = Math.floor(totalPG + alTotal);
+  
+  
+  if (isNaN(totalResult)){
+  
+   alert("입력하신 내용 중에 에러가 있습니다. 숫자와 콤마를 제외한 다른 문자나 공백이 있는지 확인해주세요.");
+  
+  }
+  else {
+   r = setWon(totalResult);
+   alert(r);
+
+  
+  }
+ };
+ 
+ function setWon(pWon) {
+    var won  = (pWon+"").replace(/,/g, "");
+    var arrWon  = ["원", "만", "억", "조", "경", "해", "자", "양", "구", "간", "정"];
+    var changeWon = "";
+    var pattern = /(-?[0-9]+)([0-9]{4})/;
+    while(pattern.test(won)) {                  
+        won = won.replace(pattern,"$1,$2");
+    }
+    var arrCnt = won.split(",").length-1;
+    for(var ii=0; ii<won.split(",").length; ii++) {
+        if(arrWon[arrCnt] == undefined) {
+            alert("값의 수가 너무 큽니다.");
+            break;
+        }
+   var tmpwon=0;
+   for(i=0;i<won.split(",")[ii].length;i++){
+    var num1 = won.split(",")[ii].substring(i,i+1);
+    tmpwon = tmpwon+Number(num1);
+   }
+   if(tmpwon > 0){
+     changeWon += won.split(",")[ii]+arrWon[arrCnt]; //55억0000만0000원 이런 형태 방지 0000 다 짤라 버린다
+   }
+         arrCnt--;
+     }
+  return changeWon;
+ }
+
+
+    
+</script>
+
+
+</body>
+
+</html>
+
+
+
+
+
